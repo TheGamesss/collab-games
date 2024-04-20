@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>emujs</title>
+	</head>
+    <style>
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin: 0;
+			background-color: transparent;
+		}
+	</style>
+    <body>
+        <div style="width:100vw;height:100vh;max-width:100%">
+            <div class="game" id="game"></div>
+        </div>
+        <script>
+            enableLoadingScreen(document.body);
+            var executableUrl = getUrlParameter("rom", true);
+            var core = getUrlParameter("core", true);
+            if (!executableUrl) displayError(`Error: Rom URL Not Valid`, `Given rom ${executableUrl ? executableUrl : ""} not valid.`); //Invalid Url
+            EJS_player = "#game";
+            EJS_core = core;
+            EJS_color = "#390f9a";
+            EJS_startOnLoaded = true;
+            EJS_gameUrl = executableUrl;
+            EJS_volume = 1;
+            EJS_alignStartButton = "center";
+            EJS_backgroundColor = '#6a3bd9';
+            EJS_paths = {
+    "GameManager.js": "blob:https://emulatorjs.org/0a0a0a0a-0a0a-0a0a-0a0a-0a0a0a0a0a0a",
+    "emulator.min.css": "blob:https://emulatorjs.org/0a0a0a0a-0a0a-0a0a-0a0a-0a0a0a0a0a0a",
+    "emulator.min.js": "https://cdn.emulatorjs.org/emulator.min.js",
+    "gamepad.js": "https://cdn.emulatorjs.org/gamepad.js",
+    "loader.js": "https://cdn.emulatorjs.org/loader.js",
+    "nipplejs.js": "https://cdn.emulatorjs.org/nipplejs.js",
+    "shaders.js": "https://cdn.emulatorjs.org/shaders.js",
+    "socket.io.min.js": "https://cdn.emulatorjs.org/socket.io.min.js",
+    "storage.js": "https://cdn.emulatorjs.org/storage.js",
+    "version.json": "https://cdn.emulatorjs.org/version.json"
+    };
+        </script>
+        <script src="https://cdn.emulatorjs.org/latest/data/loader.js"></script>
+    </body>
+</html>
